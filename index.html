@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IL PERCORSO DELL'ARIA — Apruzzese · Maturità 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=JetBrains+Mono:wght@400;600&display=swap');
+
+  :root {
+    --bg: #0a0d14;
+    --surface: #111520;
+    --surface2: #161b2a;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --mec: #f59e0b;
+    --mec-dim: rgba(245,158,11,0.12);
+    --it: #ef4444;
+    --it-dim: rgba(239,68,68,0.12);
+    --en: #3b82f6;
+    --en-dim: rgba(59,130,246,0.12);
+    --str: #10b981;
+    --str-dim: rgba(16,185,129,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0; opacity: 0.5;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(42,159,214,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 110%, rgba(245,158,11,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(42,159,214,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,159,214,0.05) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--str);
+    border: 1px solid var(--str);
+    padding: 0.3rem 0.9rem;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    position: relative; z-index: 2;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 11vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    color: #f0f6ff;
+    text-shadow: 0 0 60px rgba(42,159,214,0.3);
+    position: relative; z-index: 2;
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .hero h1 span { color: var(--mec); }
+
+  .hero-sub {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--muted);
+    margin-top: 1.2rem;
+    max-width: 640px;
+    font-weight: 300;
+    position: relative; z-index: 2;
+    animation: fadeUp 0.7s 0.2s ease both;
+  }
+
+  /* STUDENT CARD */
+  .student-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 100px;
+    padding: 0.6rem 1.4rem 0.6rem 0.6rem;
+    margin-top: 1.8rem;
+    backdrop-filter: blur(8px);
+    position: relative; z-index: 2;
+    animation: fadeUp 0.7s 0.15s ease both;
+  }
+
+  .student-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #10b981);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .student-name {
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .student-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+    display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center;
+  }
+
+  .student-badge {
+    background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(16,185,129,0.2));
+    border: 1px solid rgba(59,130,246,0.3);
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+    color: #7dd3fc;
+    font-weight: 600;
+  }
+
+  .student-sep { color: rgba(255,255,255,0.2); }
+
+  /* HERO TAGS */
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 1.5rem 0 1.2rem;
+    position: relative; z-index: 2;
+    animation: fadeUp 0.7s 0.35s ease both;
+  }
+
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    padding: 0.35rem 0.8rem;
+    border-radius: 100px;
+    border: 1px solid;
+    background: rgba(255,255,255,0.03);
+    transition: background 0.2s;
+  }
+
+  .hero-tag:hover { background: rgba(255,255,255,0.07); }
+
+  .instruction {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    position: relative; z-index: 2;
+    animation: fadeUp 0.7s 0.4s ease both;
+  }
+
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    z-index: 2;
+    animation: fadeUp 0.6s 1.2s ease both;
+  }
+
+  .scroll-arrow {
+    width: 1px; height: 40px;
+    background: linear-gradient(var(--str), transparent);
+    animation: scrollPulse 1.8s infinite;
+  }
+
+  /* ─── ECS FLOW SECTION ─── */
+  .flow-section {
+    padding: 5rem 1.5rem;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
+    position: relative; z-index: 1;
+  }
+
+  .flow-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-overline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--str); margin-bottom: 0.6rem;
+  }
+
+  .section-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #f0f6ff; line-height: 1; margin-bottom: 2rem;
+  }
+
+  .flow-svg-wrap {
+    margin-top: 1.5rem; overflow-x: auto;
+    border: 1px solid var(--border); border-radius: 12px;
+    background: var(--surface2); padding: 1.5rem;
+  }
+
+  .flow-caption {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; color: var(--muted);
+    margin-top: 0.8rem; letter-spacing: 0.08em;
+  }
+
+  /* ─── CARDS GRID ─── */
+  .cards-section {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 5rem 1.5rem;
+    position: relative; z-index: 1;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  @media (max-width: 600px) { .cards-grid { grid-template-columns: 1fr; } }
+
+  .card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.35s ease, border-color 0.35s ease;
+    overflow: hidden;
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.5s, transform 0.5s, box-shadow 0.3s, border-color 0.3s;
+  }
+
+  .card.visible {
+    opacity: 1; transform: translateY(0);
+  }
+
+  .card::before {
+    content: ''; position: absolute; inset: 0;
+    opacity: 0; transition: opacity 0.35s ease; border-radius: 16px;
+  }
+
+  /* top accent bar */
+  .card::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+  }
+
+  .card:hover::after { transform: scaleX(1); }
+
+  .card[data-subject="mec"]::before { background: var(--mec-dim); }
+  .card[data-subject="it"]::before  { background: var(--it-dim); }
+  .card[data-subject="en"]::before  { background: var(--en-dim); }
+  .card[data-subject="str"]::before { background: var(--str-dim); }
+  .card[data-subject="mec"]::after  { background: var(--mec); }
+  .card[data-subject="it"]::after   { background: var(--it); }
+  .card[data-subject="en"]::after   { background: var(--en); }
+  .card[data-subject="str"]::after  { background: var(--str); }
+
+  .card:hover::before { opacity: 1; }
+
+  .card[data-subject="mec"]:hover { border-color: rgba(245,158,11,0.4); box-shadow: 0 20px 60px rgba(245,158,11,0.1); transform: translateY(-6px) scale(1.01); }
+  .card[data-subject="it"]:hover  { border-color: rgba(239,68,68,0.4);  box-shadow: 0 20px 60px rgba(239,68,68,0.1);  transform: translateY(-6px) scale(1.01); }
+  .card[data-subject="en"]:hover  { border-color: rgba(59,130,246,0.4); box-shadow: 0 20px 60px rgba(59,130,246,0.1); transform: translateY(-6px) scale(1.01); }
+  .card[data-subject="str"]:hover { border-color: rgba(16,185,129,0.4); box-shadow: 0 20px 60px rgba(16,185,129,0.1); transform: translateY(-6px) scale(1.01); }
+
+  .card-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem; line-height: 1;
+    opacity: 0.06; position: absolute;
+    top: 1rem; right: 1.4rem;
+    pointer-events: none;
+  }
+
+  .card-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+
+  .card-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    padding: 0.3rem 0.7rem; border-radius: 100px;
+    display: inline-block; margin-bottom: 0.8rem; font-weight: 600;
+  }
+
+  .card[data-subject="mec"] .card-badge { background: var(--mec-dim); color: var(--mec); border: 1px solid rgba(245,158,11,0.3); }
+  .card[data-subject="it"]  .card-badge { background: var(--it-dim);  color: var(--it);  border: 1px solid rgba(239,68,68,0.3); }
+  .card[data-subject="en"]  .card-badge { background: var(--en-dim);  color: var(--en);  border: 1px solid rgba(59,130,246,0.3); }
+  .card[data-subject="str"] .card-badge { background: var(--str-dim); color: var(--str); border: 1px solid rgba(16,185,129,0.3); }
+
+  .card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem; letter-spacing: 0.03em; line-height: 1; margin-bottom: 0.5rem;
+  }
+
+  .card p { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  .card-footer-row {
+    display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem;
+  }
+
+  .card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem; color: var(--muted);
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 4px; padding: 0.15rem 0.5rem;
+  }
+
+  .card-arrow {
+    position: absolute; bottom: 1.5rem; right: 1.5rem;
+    font-size: 1.2rem; color: var(--muted);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  .card:hover .card-arrow { transform: translate(3px,-3px); }
+  .card[data-subject="mec"]:hover .card-arrow { color: var(--mec); }
+  .card[data-subject="it"]:hover  .card-arrow { color: var(--it); }
+  .card[data-subject="en"]:hover  .card-arrow { color: var(--en); }
+  .card[data-subject="str"]:hover .card-arrow { color: var(--str); }
+
+  /* ─── QUOTE BANNER ─── */
+  .quote-banner {
+    padding: 4rem 1.5rem;
+    text-align: center;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--surface) 50%, var(--bg) 100%);
+    position: relative; z-index: 1;
+  }
+
+  .quote-text {
+    max-width: 780px; margin: 0 auto;
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
+    font-style: italic; color: var(--text); line-height: 1.7;
+  }
+
+  .quote-attr {
+    margin-top: 1.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--str);
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    max-width: 800px; margin: 0 auto;
+  }
+
+  /* ─── GLOSSARY ─── */
+  .glossary-section {
+    max-width: 1100px; margin: 0 auto;
+    padding: 5rem 1.5rem;
+    position: relative; z-index: 1;
+  }
+
+  .gloss-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 0.85rem; margin-top: 2rem;
+  }
+
+  .gloss-item {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.9rem 1.1rem;
+    transition: border-color 0.2s;
+  }
+
+  .gloss-item:hover { border-color: var(--str); }
+
+  .gloss-term {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.88rem; font-weight: 600;
+    color: var(--str); letter-spacing: 0.05em; margin-bottom: 0.25rem;
+  }
+
+  .gloss-def { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem 4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); border-top: 1px solid var(--border);
+    position: relative; z-index: 1;
+  }
+
+  footer span { color: var(--str); }
+  footer p + p { margin-top: 0.4rem; }
+
+  /* ─── MODAL ─── */
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+    display: flex; align-items: flex-start; justify-content: center;
+    padding: 1.5rem; overflow-y: auto;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    max-width: 820px; width: 100%;
+    margin: auto; padding: 2.5rem;
+    position: relative;
+    transform: translateY(30px) scale(0.97);
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    z-index: 1001;
+  }
+
+  .modal-overlay.active .modal { transform: translateY(0) scale(1); }
+
+  .modal-close {
+    position: absolute; top: 1.2rem; right: 1.2rem;
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--muted); width: 36px; height: 36px;
+    border-radius: 50%; cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .modal-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+  /* Modal sections */
+  .modal-header {
+    display: flex; align-items: center; gap: 1rem;
+    margin-bottom: 2rem; padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .modal-icon { font-size: 2.5rem; }
+  .modal-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; letter-spacing: 0.03em; line-height: 1; }
+  .modal-subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-top: 0.2rem; }
+
+  .section { margin-bottom: 2.2rem; }
+
+  .section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .section h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.6rem; }
+  .section p, .section li { font-size: 0.88rem; line-height: 1.75; color: #b0b8c8; }
+  .section ul, .section ol { padding-left: 1.4rem; margin-top: 0.5rem; }
+  .section li { margin-bottom: 0.3rem; }
+
+  .formula-box {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-left: 3px solid var(--mec);
+    border-radius: 8px; padding: 1.2rem 1.5rem;
+    margin: 1rem 0; font-family: 'JetBrains Mono', monospace;
+    font-size: 0.92rem; color: var(--mec); text-align: center;
+    overflow-x: auto;
+  }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; margin: 1rem 0; }
+
+  .info-chip {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.8rem; text-align: center;
+  }
+
+  .info-chip .val { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; display: block; }
+  .info-chip .lbl { font-size: 0.68rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; line-height: 1.4; }
+
+  .quote-block {
+    border-left: 3px solid var(--it); padding: 0.8rem 1.2rem;
+    margin: 1rem 0; background: var(--it-dim);
+    border-radius: 0 8px 8px 0; font-style: italic;
+    font-size: 0.88rem; color: #c8c8d8;
+  }
+
+  .quote-block cite { display: block; margin-top: 0.4rem; font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; color: var(--it); }
+
+  .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin: 1rem 0; }
+  @media (max-width: 500px) { .vocab-grid { grid-template-columns: 1fr; } }
+
+  .vocab-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.7rem 0.9rem; }
+  .vocab-item .term { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; color: var(--en); margin-bottom: 0.2rem; }
+  .vocab-item .def { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+  .svg-container { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; margin: 1rem 0; overflow: hidden; }
+  .svg-container svg { width: 100%; height: auto; display: block; }
+
+  .step-flow { display: flex; flex-direction: column; gap: 0; margin: 1rem 0; }
+
+  .step-item { display: flex; gap: 1rem; position: relative; }
+  .step-item:not(:last-child)::after { content: ''; position: absolute; left: 16px; top: 36px; width: 1px; bottom: 0; background: var(--border); }
+
+  .step-num { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600; flex-shrink: 0; position: relative; z-index: 1; }
+
+  .step-body { padding: 0.2rem 0 1.5rem; flex: 1; }
+  .step-body h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.3rem; }
+  .step-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  .comparison-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.82rem; }
+  .comparison-table th { background: var(--surface2); padding: 0.6rem 0.8rem; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; border: 1px solid var(--border); }
+  .comparison-table td { padding: 0.6rem 0.8rem; border: 1px solid var(--border); color: #b0b8c8; vertical-align: top; }
+  .comparison-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+
+  /* ─── EDUCAZIONE CIVICA BOX ─── */
+  .edciv-box {
+    border: 1px solid rgba(99,102,241,0.45);
+    border-left: 4px solid #6366f1;
+    border-radius: 10px;
+    background: rgba(99,102,241,0.07);
+    padding: 1.4rem 1.6rem;
+    margin-top: 2rem;
+    position: relative;
+  }
+
+  .edciv-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #818cf8;
+    background: rgba(99,102,241,0.14);
+    border: 1px solid rgba(99,102,241,0.35);
+    border-radius: 100px;
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+
+  .edciv-box h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin-bottom: 1rem;
+    line-height: 1.35;
+  }
+
+  .edciv-item {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 0.9rem;
+    align-items: flex-start;
+  }
+
+  .edciv-item:last-child { margin-bottom: 0; }
+
+  .edciv-icon {
+    width: 26px; height: 26px; flex-shrink: 0;
+    border-radius: 6px;
+    background: rgba(99,102,241,0.18);
+    border: 1px solid rgba(99,102,241,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+    margin-top: 0.05rem;
+  }
+
+  .edciv-item-body h4 {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: #a5b4fc;
+    margin-bottom: 0.2rem;
+  }
+
+  .edciv-item-body p {
+    font-size: 0.8rem !important;
+    color: #94a3b8 !important;
+    line-height: 1.6 !important;
+  }
+
+  .edciv-item-body ul {
+    margin: 0.25rem 0 0 0 !important;
+    padding-left: 1.1rem !important;
+  }
+
+  .edciv-item-body li {
+    font-size: 0.78rem !important;
+    color: #94a3b8 !important;
+    margin-bottom: 0.2rem !important;
+    line-height: 1.55 !important;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scrollPulse { 0%,100%{opacity:.3}50%{opacity:1} }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .cards-grid { grid-template-columns: 1fr 1fr; }
+    .modal { padding: 1.5rem; }
+    .modal-title { font-size: 2rem; }
+  }
+
+  @media (max-width: 500px) {
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-label">Esame di Maturità · Costruzioni del Mezzo Aereo</div>
+
+  <h1>IL PERCORSO<br><span>DELL'ARIA</span></h1>
+
+  <p class="hero-sub">L'Environmental Control System, la termodinamica dei cicli frigoriferi, D'Annunzio e la macchina, i materiali compositi nell'ingegneria aerospaziale.</p>
+
+  <div class="hero-tags" style="margin-top:1.2rem;">
+    <span class="hero-tag" style="border-color:rgba(245,158,11,0.4);color:var(--mec)">⚙ Meccanica &amp; Macchine</span>
+    <span class="hero-tag" style="border-color:rgba(16,185,129,0.4);color:var(--str)">🔧 Strutture &amp; Impianti ECS</span>
+    <span class="hero-tag" style="border-color:rgba(239,68,68,0.4);color:var(--it)">✒ Italiano · D'Annunzio</span>
+    <span class="hero-tag" style="border-color:rgba(59,130,246,0.4);color:var(--en)">🌐 English · Composite Materials</span>
+  </div>
+
+  <div class="student-card">
+    <div class="student-avatar">VNA</div>
+    <div>
+      <div class="student-name">Valentino Nour Apruzzese</div>
+      <div class="student-meta">
+        <span class="student-badge">5 ACA</span>
+        <span class="student-sep">·</span>
+        <span>ITIS E. Majorana, Cassino</span>
+        <span class="student-sep">·</span>
+        <span>A.S. 2025/2026 — Esame di maturità</span>
+        <span class="student-sep">·</span>
+        <span style="color:#f59e0b;background:rgba(245,158,11,0.13);border:1px solid rgba(245,158,11,0.35);border-radius:4px;padding:0.1rem 0.45rem;font-weight:600;letter-spacing:0.04em;">✦ capolavoro</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="instruction" style="margin-top:2rem;">[ seleziona una materia per approfondire ]</p>
+
+  <div class="scroll-hint">
+    <span>Scorri</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</header>
+
+<!-- ══════════ ECS FLOW DIAGRAM ══════════ -->
+<div class="flow-section">
+  <div class="flow-inner">
+    <div class="section-overline">Impianto ECS · ATA 21</div>
+    <div class="section-heading">Il Percorso dell'Aria nel Sistema</div>
+    <div class="flow-svg-wrap">
+      <svg viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:540px;font-family:'DM Sans',sans-serif">
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#2a9fd6"/>
+          </marker>
+          <marker id="arrG" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/>
+          </marker>
+          <marker id="arrO" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="#e85d26"/>
+          </marker>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Arrows -->
+        <path d="M130,110 L220,110" stroke="#e85d26" stroke-width="4" fill="none" marker-end="url(#arrO)"/>
+        <path d="M305,110 L395,110" stroke="#e85d26" stroke-width="4" fill="none" marker-end="url(#arr)"/>
+        <path d="M480,110 L570,110" stroke="#2a9fd6" stroke-width="4" fill="none" marker-end="url(#arr)"/>
+        <path d="M655,110 L745,110" stroke="#2a9fd6" stroke-width="4" fill="none" marker-end="url(#arr)"/>
+        <!-- Outflow back arrow -->
+        <path d="M830,110 L870,110 L870,150 L500,150 L500,190" stroke="#40c080" stroke-width="3" fill="none" stroke-dasharray="6 3" marker-end="url(#arrG)"/>
+        <!-- Ram Air dashed -->
+        <path d="M260,30 L260,95" stroke="#aac8e0" stroke-width="2" stroke-dasharray="4 2" opacity="0.5"/>
+        <path d="M440,30 L440,95" stroke="#aac8e0" stroke-width="2" stroke-dasharray="4 2" opacity="0.5"/>
+
+        <!-- MOTORE -->
+        <rect x="20" y="70" width="110" height="80" rx="6" fill="#0f1825" stroke="#e85d26" stroke-width="1.5"/>
+        <text x="75" y="102" text-anchor="middle" fill="#e85d26" font-size="11" font-family="JetBrains Mono" letter-spacing="1">MOTORE</text>
+        <text x="75" y="117" text-anchor="middle" fill="#6a8aaa" font-size="9">Bleed Air</text>
+        <text x="75" y="131" text-anchor="middle" fill="#e85d26" font-size="10">&gt;300 °C</text>
+
+        <!-- PRE-COOLER / PHX -->
+        <rect x="220" y="75" width="85" height="70" rx="6" fill="#0f1825" stroke="#2a9fd6" stroke-width="1.5"/>
+        <text x="262" y="106" text-anchor="middle" fill="#2a9fd6" font-size="10" font-family="JetBrains Mono" letter-spacing="1">PRE-COOLER</text>
+        <text x="262" y="120" text-anchor="middle" fill="#6a8aaa" font-size="8">Primary HX</text>
+        <text x="262" y="50" text-anchor="middle" fill="#aac8e0" font-size="8" opacity="0.6">↓ Ram Air</text>
+
+        <!-- ACM Bootstrap -->
+        <rect x="395" y="60" width="85" height="95" rx="6" fill="#0f1825" stroke="#2a9fd6" stroke-width="2" filter="url(#glow)"/>
+        <text x="437" y="96" text-anchor="middle" fill="#2a9fd6" font-size="11" font-family="JetBrains Mono" letter-spacing="1">ACM</text>
+        <text x="437" y="110" text-anchor="middle" fill="#6a8aaa" font-size="8">Bootstrap</text>
+        <text x="437" y="124" text-anchor="middle" fill="#40c080" font-size="8">Ciclo Joule ↺</text>
+        <text x="437" y="45" text-anchor="middle" fill="#aac8e0" font-size="8" opacity="0.6">↓ Intercooler</text>
+
+        <!-- WATER SEP -->
+        <rect x="570" y="78" width="85" height="65" rx="6" fill="#0f1825" stroke="#2a9fd6" stroke-width="1.5"/>
+        <text x="612" y="108" text-anchor="middle" fill="#2a9fd6" font-size="9" font-family="JetBrains Mono" letter-spacing="1">WATER SEP</text>
+        <text x="612" y="122" text-anchor="middle" fill="#6a8aaa" font-size="8">Humidity −</text>
+
+        <!-- MIXING UNIT -->
+        <rect x="745" y="75" width="85" height="70" rx="6" fill="#0f1825" stroke="#40c080" stroke-width="1.5"/>
+        <text x="787" y="105" text-anchor="middle" fill="#40c080" font-size="10" font-family="JetBrains Mono" letter-spacing="1">MIXING</text>
+        <text x="787" y="120" text-anchor="middle" fill="#40c080" font-size="10" font-family="JetBrains Mono">UNIT</text>
+
+        <!-- CABINA -->
+        <rect x="455" y="175" width="90" height="40" rx="6" fill="#0f1825" stroke="#40c080" stroke-width="1.5"/>
+        <text x="500" y="199" text-anchor="middle" fill="#40c080" font-size="10" font-family="JetBrains Mono" letter-spacing="1">CABINA</text>
+
+        <!-- Outflow Valve label -->
+        <path d="M455,195 L400,195 L400,215 L380,215" stroke="#f0c040" stroke-width="2" fill="none" stroke-dasharray="5 3"/>
+        <text x="350" y="213" text-anchor="end" fill="#f0c040" font-size="8">Outflow Valve</text>
+
+        <!-- Temperature labels -->
+        <text x="165" y="105" text-anchor="middle" fill="#e85d26" font-size="9">~250°C</text>
+        <text x="358" y="105" text-anchor="middle" fill="#2a9fd6" font-size="9">~60°C</text>
+        <text x="530" y="105" text-anchor="middle" fill="#2a9fd6" font-size="9">~−30°C</text>
+        <text x="710" y="105" text-anchor="middle" fill="#40c080" font-size="9">~18°C</text>
+      </svg>
+    </div>
+    <p class="flow-caption">Ciclo Bootstrap aperto: Bleed Air dal compressore → PHX → ACM (Bootstrap) → Water Separator → Mixing Unit → Cabina → Outflow Valve.</p>
+  </div>
+</div>
+
+<!-- ══════════ 4 CARDS ══════════ -->
+<section class="cards-section">
+  <div class="section-overline">Argomenti dell'Esame di Stato 2026</div>
+  <div class="section-heading">Le Quattro Materie</div>
+  <div class="cards-grid" id="cardsGrid">
+
+    <!-- MECCANICA -->
+    <div class="card" data-subject="mec" onclick="openModal('mec')">
+      <div class="card-num">01</div>
+      <span class="card-icon">⚙️</span>
+      <span class="card-badge">Meccanica &amp; Macchine</span>
+      <h2>Cicli Termodi­namici</h2>
+      <p>Ciclo Brayton-Joule, Ciclo Bootstrap inverso nell'ECS, principi termodinamici applicati ai sistemi aeronautici.</p>
+      <div class="card-footer-row">
+        <span class="card-tag">termodinamica</span>
+        <span class="card-tag">ECS</span>
+        <span class="card-tag">bootstrap</span>
+      </div>
+      <span class="card-arrow">↗</span>
+    </div>
+
+    <!-- STRUTTURA -->
+    <div class="card" data-subject="str" onclick="openModal('str')">
+      <div class="card-num">02</div>
+      <span class="card-icon">🔧</span>
+      <span class="card-badge">Struttura del Mezzo Aereo</span>
+      <h2>ECS — ATA 21</h2>
+      <p>Environmental Control System: pressurizzazione, condizionamento, workflow dell'aria, sicurezza in quota.</p>
+      <div class="card-footer-row">
+        <span class="card-tag">pressurizzazione</span>
+        <span class="card-tag">ATA 21</span>
+        <span class="card-tag">quota cabina</span>
+      </div>
+      <span class="card-arrow">↗</span>
+    </div>
+
+    <!-- ITALIANO -->
+    <div class="card" data-subject="it" onclick="openModal('it')">
+      <div class="card-num">03</div>
+      <span class="card-icon">✒️</span>
+      <span class="card-badge">Italiano</span>
+      <h2>D'Annunzio &amp; il Volo</h2>
+      <p>Il Superuomo nel cielo: Gabriele D'Annunzio, il Futurismo e la macchina come estensione dello spirito.</p>
+      <div class="card-footer-row">
+        <span class="card-tag">superuomo</span>
+        <span class="card-tag">futurismo</span>
+        <span class="card-tag">Vienna 1918</span>
+      </div>
+      <span class="card-arrow">↗</span>
+    </div>
+
+    <!-- INGLESE -->
+    <div class="card" data-subject="en" onclick="openModal('en')">
+      <div class="card-num">04</div>
+      <span class="card-icon">🌐</span>
+      <span class="card-badge">Technical English</span>
+      <h2>Composite Materials</h2>
+      <p>Fiber-reinforced composites, PMC/MMC/CMC classification, structural integration with the ECS and pressurized fuselage design.</p>
+      <div class="card-footer-row">
+        <span class="card-tag">CFRP</span>
+        <span class="card-tag">bleed air</span>
+        <span class="card-tag">fatigue resistance</span>
+      </div>
+      <span class="card-arrow">↗</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ QUOTE BANNER ══════════ -->
+<div class="quote-banner">
+  <p class="quote-text">"L'ECS è la tecnologia <em>invisibile</em> che rende possibile l'eroismo del volo: crea artificialmente la vita a 10.000 metri di quota, permettendo al pilota di trasformare la macchina in un'estensione del proprio spirito."</p>
+  <div class="quote-attr">Tesi Multidisciplinare · Maturità 2026</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══════════ GLOSSARY ══════════ -->
+<section class="glossary-section">
+  <div class="section-overline">Technical English &amp; Italiano Tecnico</div>
+  <div class="section-heading">Glossario Essenziale</div>
+  <div class="gloss-grid">
+    <div class="gloss-item"><div class="gloss-term">Bleed Air</div><div class="gloss-def">Aria spillata ad alta T e P dal compressore del motore. Fonte primaria dell'ECS.</div></div>
+    <div class="gloss-item"><div class="gloss-term">ACM — Air Cycle Machine</div><div class="gloss-def">Turbomacchina che realizza il ciclo frigorifero ad aria (Bootstrap). Sull'A320: ventola–compressore–turbina sullo stesso albero.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Pack</div><div class="gloss-def">Unità di condizionamento (Bleed Air + HX + ACM). Sull'A320 ce ne sono 2 (PACK 1 e PACK 2).</div></div>
+    <div class="gloss-item"><div class="gloss-term">Outflow Valve</div><div class="gloss-def">Valvola di efflusso che regola la pressurizzazione scaricando aria all'esterno della fusoliera.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Cabin Altitude</div><div class="gloss-def">Quota equivalente dell'aria in cabina (max 8.000 ft / 2.440 m per velivoli passeggeri commerciali).</div></div>
+    <div class="gloss-item"><div class="gloss-term">Hypoxia / Ipossia</div><div class="gloss-def">Carenza di ossigeno nei tessuti per bassa pressione parziale O₂. Grave oltre i 6.500 m senza ECS.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Differential Pressure</div><div class="gloss-def">ΔP tra cabina e atmosfera esterna. Valore standard: 7,46 psi per aerei di linea.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Water Separator</div><div class="gloss-def">Componente che separa l'umidità condensata dall'aria fredda prima dell'immissione in cabina.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Ciclo Joule Inverso</div><div class="gloss-def">Ciclo frigorifero ad aria: compressione adiabatica → raffreddamento isobaro → espansione adiabatica → assorbimento isobaro.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Bootstrap</div><div class="gloss-def">Variante del ciclo Joule con compressore secondario mosso dalla turbina di espansione per maggiore efficienza.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Ram Air</div><div class="gloss-def">Aria dinamica di presa esterna, utilizzata per raffreddare gli scambiatori di calore del Pack.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Heat Exchanger / Scambiatore</div><div class="gloss-def">Dispositivo che trasferisce calore tra due fluidi senza miscelarli. PHX (primario) e SHX (secondario) nell'ECS.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Flow Control Valve (FCV)</div><div class="gloss-def">Valvola che regola e intercetta la Bleed Air verso il Pack. Si chiude automaticamente in caso di surriscaldamento.</div></div>
+    <div class="gloss-item"><div class="gloss-term">HEPA Filter</div><div class="gloss-def">High-Efficiency Particulate Air: filtro sull'aria ricircolata che elimina il 99,97% di particolato ≥0,3 µm.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Mixing Unit</div><div class="gloss-def">Zona dove l'aria fresca condizionata si mescola con l'aria ricircolata (filtrata HEPA) prima della distribuzione.</div></div>
+    <div class="gloss-item"><div class="gloss-term">Ebullismo</div><div class="gloss-def">Ebollizione dei liquidi corporei per pressione molto bassa (&gt;19.000 m / P &lt; 1/3 P₀). Mortale senza pressurizzazione.</div></div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <p>Infografica Interattiva · <span>Costruzioni del Mezzo Aereo</span> · Esame di Stato 2026</p>
+  <p>Materie: <span>Meccanica &amp; Macchine</span> · <span>Impianti ECS ATA 21</span> · <span>Italiano</span> · <span>English Technical</span></p>
+</footer>
+
+<!-- ══════════ MODAL OVERLAY ══════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modalContent">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+/* ─── SCROLL REVEAL ─── */
+const cards = document.querySelectorAll('.card');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const allCards = [...document.querySelectorAll('.card')];
+      allCards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 120));
+      observer.disconnect();
+    }
+  });
+}, { threshold: 0.1 });
+observer.observe(document.getElementById('cardsGrid'));
+
+/* ─── MODAL ─── */
+function openModal(subject) {
+  const overlay = document.getElementById('modalOverlay');
+  const body = document.getElementById('modalBody');
+  body.innerHTML = getContent(subject);
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => { overlay.scrollTop = 0; }, 50);
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* ─── CONTENT ─── */
+function getContent(subject) {
+  const contents = {
+
+/* ══════ MECCANICA ══════ */
+mec: `
+<div class="modal-header">
+  <span class="modal-icon">⚙️</span>
+  <div>
+    <div class="modal-title" style="color:var(--mec)">Cicli Termodinamici</div>
+    <div class="modal-subtitle">Meccanica, Macchine e Sistemi Propulsivi</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Principi fondamentali</div>
+  <h3>I Principi della Termodinamica</h3>
+  <p>La termodinamica studia le trasformazioni di energia nei sistemi fisici. Due principi fondamentali regolano ogni ciclo aeronautico — dal turboreattore all'ECS:</p>
+  <ul>
+    <li><strong>1° Principio (Conservazione dell'Energia):</strong> la variazione di energia interna di un sistema è uguale al calore scambiato col sorgente meno il lavoro compiuto. Per un sistema aperto a flusso stazionario (come turbina o compressore), l'energia si esprime tramite l'<em>entalpia</em> h = u + Pv, e il lavoro specifico vale l = Δh = c_p · ΔT.</li>
+    <li><strong>2° Principio (Entropia):</strong> in un sistema isolato l'entropia tende sempre ad aumentare. Nessuna macchina termica reale può avere rendimento 100%: una quota di calore (q_i) viene sempre ceduta alla sorgente fredda senza produrre lavoro utile. Il ciclo di Carnot definisce il rendimento massimo teoricamente raggiungibile.</li>
+  </ul>
+  <div class="formula-box">Sistema chiuso: ΔU = Q − L
+Sistema aperto (flusso): l_comp = c_p(T₂−T₁) | l_turb = c_p(T₃−T₄)
+Rendimento ciclo motore: η = L_netto / Q_s = 1 − |Q_i| / Q_s
+COP ciclo frigorifero: COP = Q_freddo / L_assorbito</div>
+  <div class="info-grid">
+    <div class="info-chip"><span class="val" style="color:var(--mec)">T = cost</span><span class="lbl">ISOTERMA<br>ΔU=0 → Q=L</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--en)">V = cost</span><span class="lbl">ISOCORA<br>L=0 → Q=ΔU</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--str)">P = cost</span><span class="lbl">ISOBARA<br>Q=mc_p·ΔT</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--it)">Q = 0</span><span class="lbl">ADIABATICA<br>ΔU=−L</span></div>
+  </div>
+  <div class="formula-box">Trasformazione adiabatica reversibile (isentropica):
+PV^k = cost  |  T₂/T₁ = (P₂/P₁)^((k−1)/k)
+con k = c_p/c_v ≈ 1,4 per aria biatomica  →  (k−1)/k ≈ 0,286
+c_p(aria) ≈ 1,005 kJ/(kg·K)</div>
+  <p>La distinzione tra <strong>sistema chiuso</strong> (massa fissa, bordo stantuffo) e <strong>sistema aperto a flusso stazionario</strong> (flusso continuo attraverso macchina) è essenziale: motore aeronautico e ECS operano sempre come sistemi aperti, quindi il lavoro è calcolato sulla variazione di entalpia, non di energia interna.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Ciclo Brayton-Joule (motore diretto)</div>
+  <h3>Il Ciclo del Turboreattore</h3>
+  <p>Il <strong>ciclo Brayton</strong> (o ciclo Joule) è il ciclo ideale dei motori a gas: turboreattori, turbofan, turboprop. Si distingue dal ciclo Otto (motori alternativi) perché la combustione avviene a <strong>pressione costante</strong> (isobara) anziché a volume costante. È un ciclo a 4 trasformazioni, con 2 adiabatiche e 2 isobare:</p>
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-num" style="background:var(--mec-dim);color:var(--mec);border:1px solid rgba(245,158,11,0.3)">1→2</div>
+      <div class="step-body"><h4>Compressione adiabatica (compressore)</h4><p>L'aria aspirata viene compressa: P e T aumentano, V diminuisce. Il processo è idealmente isentropico (Q = 0). Il <strong>lavoro di compressione</strong> L_c = c_p(T₂−T₁) è fornito dalla turbina stessa. Il rapporto di compressione λ = P₂/P₁ nei turbofan moderni è 20–45.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--it-dim);color:var(--it);border:1px solid rgba(239,68,68,0.3)">2→3</div>
+      <div class="step-body"><h4>Riscaldamento isobaro (camera di combustione)</h4><p>Calore q_s immesso a pressione costante bruciando il kerosene. T e V aumentano. La temperatura in ingresso turbina può superare 1700 °C. Per proteggere i materiali, la combustione avviene con forte eccesso d'aria: <strong>rapporto di equivalenza φ = 0,3–0,4</strong> (eccesso d'aria λ = 2,5–3,5).</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--str-dim);color:var(--str);border:1px solid rgba(16,185,129,0.3)">3→4</div>
+      <div class="step-body"><h4>Espansione adiabatica (turbina)</h4><p>I gas espandono in turbina: P e T calano, V aumenta. Si ricava il <strong>lavoro di turbina</strong> L_t = c_p(T₃−T₄). Lavoro netto utile: L = L_t − L_c. Nei turbofan una parte della potenza turbina aziona il fan per la spinta ad alta bypass ratio.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--en-dim);color:var(--en);border:1px solid rgba(59,130,246,0.3)">4→1</div>
+      <div class="step-body"><h4>Raffreddamento isobaro (scarico)</h4><p>Il gas cede calore q_i all'atmosfera a pressione costante — nel ciclo aperto reale questa fase coincide con lo scarico allo scarico. Nel ciclo ideale chiuso riporta il fluido alle condizioni iniziali dello stato 1.</p></div>
+    </div>
+  </div>
+
+  <div class="svg-container">
+    <svg viewBox="0 0 480 270" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="ax" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#6b7280"/>
+        </marker>
+        <marker id="ay" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b"/>
+        </marker>
+        <marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#ef4444"/>
+        </marker>
+        <marker id="ag" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/>
+        </marker>
+        <marker id="ab" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#3b82f6"/>
+        </marker>
+      </defs>
+      <!-- Assi -->
+      <line x1="55" y1="235" x2="450" y2="235" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ax)"/>
+      <line x1="55" y1="235" x2="55" y2="18" stroke="#6b7280" stroke-width="1.5" marker-end="url(#ax)"/>
+      <text x="454" y="239" fill="#6b7280" font-size="12" font-family="JetBrains Mono">V</text>
+      <text x="40" y="17" fill="#6b7280" font-size="12" font-family="JetBrains Mono">P</text>
+
+      <!--
+        Quattro stati corretti del ciclo Brayton-Joule diretto (↻ orario):
+        Stato 1: P bassa, V grande     → (300, 210)  aria ambiente prima del compressore
+        Stato 2: P alta,  V piccolo    → (105,  62)  dopo compressione adiabatica
+        Stato 3: P alta,  V maggiore   → (225,  62)  dopo combustione isobara (più caldo → più volume)
+        Stato 4: P bassa, V molto gde  → (420, 210)  dopo espansione adiabatica in turbina
+        Isobare 2→3 e 4→1: stessa larghezza (120 px) → parallele e simmetriche sul piano P-V
+      -->
+
+      <!-- Area del ciclo (riempimento) -->
+      <path d="M300,210 Q202,136 105,62 L225,62 Q318,132 420,210 Z"
+            fill="rgba(245,158,11,0.08)" stroke="none"/>
+
+      <!-- 1→2: adiabatica di COMPRESSIONE — curva verso alto-sinistra (V↓, P↑) -->
+      <path d="M300,210 Q202,136 105,62"
+            fill="none" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#ay)"/>
+      <text x="170" y="162" fill="#f59e0b" font-size="9.5" font-family="JetBrains Mono"
+            transform="rotate(-37,170,162)">1→2 Comp. adiabatica</text>
+
+      <!-- 2→3: ISOBARA di riscaldamento — orizzontale a P_alta, V aumenta (combustione) -->
+      <line x1="105" y1="62" x2="225" y2="62"
+            stroke="#ef4444" stroke-width="2.5" marker-end="url(#ar)"/>
+      <text x="165" y="50" fill="#ef4444" font-size="9.5" font-family="JetBrains Mono" text-anchor="middle">2→3  q_s  isobara (combustione)</text>
+
+      <!-- 3→4: adiabatica di ESPANSIONE — curva verso basso-destra (V↑, P↓) — turbina -->
+      <path d="M225,62 Q318,132 420,210"
+            fill="none" stroke="#10b981" stroke-width="2.5" marker-end="url(#ag)"/>
+      <text x="342" y="150" fill="#10b981" font-size="9.5" font-family="JetBrains Mono"
+            transform="rotate(37,342,150)">3→4 Esp. adiabatica (turbina)</text>
+
+      <!-- 4→1: ISOBARA di raffreddamento — orizzontale a P_bassa, V diminuisce (scarico) -->
+      <line x1="420" y1="210" x2="300" y2="210"
+            stroke="#3b82f6" stroke-width="2.5" marker-end="url(#ab)"/>
+      <text x="360" y="228" fill="#3b82f6" font-size="9" font-family="JetBrains Mono" text-anchor="middle">4→1  q_i  isobara (scarico)</text>
+
+      <!-- Punti degli stati -->
+      <circle cx="300" cy="210" r="5" fill="#f59e0b"/>
+      <text x="284" y="228" fill="#e8eaf0" font-size="11" font-family="JetBrains Mono" font-weight="600">1</text>
+
+      <circle cx="105" cy="62" r="5" fill="#f59e0b"/>
+      <text x="87"  cy="62" y="58" fill="#e8eaf0" font-size="11" font-family="JetBrains Mono" font-weight="600">2</text>
+
+      <circle cx="225" cy="62" r="5" fill="#ef4444"/>
+      <text x="228" y="52" fill="#e8eaf0" font-size="11" font-family="JetBrains Mono" font-weight="600">3</text>
+
+      <circle cx="420" cy="210" r="5" fill="#10b981"/>
+      <text x="424" y="208" fill="#e8eaf0" font-size="11" font-family="JetBrains Mono" font-weight="600">4</text>
+
+      <!-- Linee di pressione tratteggiate -->
+      <line x1="55" y1="62"  x2="100" y2="62"  stroke="#6b7280" stroke-width="1" stroke-dasharray="3 2" opacity="0.6"/>
+      <text x="25" y="66"  fill="#6b7280" font-size="9.5" font-family="JetBrains Mono">p₂</text>
+      <line x1="55" y1="210" x2="100" y2="210" stroke="#6b7280" stroke-width="1" stroke-dasharray="3 2" opacity="0.6"/>
+      <text x="25" y="214" fill="#6b7280" font-size="9.5" font-family="JetBrains Mono">p₁</text>
+
+      <!-- Freccia senso orario e label lavoro netto -->
+      <text x="225" y="142" fill="rgba(245,158,11,0.55)" font-size="28" text-anchor="middle">↻</text>
+      <text x="225" y="162" fill="rgba(245,158,11,0.4)" font-size="8.5" font-family="JetBrains Mono" text-anchor="middle">L_netto = L_t − L_c</text>
+
+      <text x="240" y="254" text-anchor="middle" fill="#6b7280" font-size="8.5" font-family="JetBrains Mono">
+        Diagramma P-V · Ciclo Brayton-Joule diretto (↻ orario) — 2 adiabatiche + 2 isobare
+      </text>
+    </svg>
+  </div>
+  <div class="formula-box">η_Brayton = 1 − 1/λ^((k−1)/k)  con λ = p₂/p₁ (rapporto di compressione), k = 1,4
+Esempio CFM56 (A320): λ ≈ 27  →  η_ideale ≈ 57%  (reale ≈ 35–42% per irreversibilità)</div>
+</div>
+
+<div class="section">
+  <div class="section-title">Ciclo Joule Inverso (ECS) — confronto col diretto</div>
+  <h3>Il Ciclo Bootstrap dell'ECS</h3>
+  <p>Nell'ECS il ciclo viene percorso <strong>in senso inverso</strong> (antiorario ↺): invece di produrre lavoro, <em>consuma</em> lavoro per trasferire calore dalla cabina verso l'esterno, ottenendo raffreddamento.</p>
+
+  <table class="comparison-table">
+    <thead><tr><th>Parametro</th><th style="color:var(--mec)">Ciclo Diretto (motore)</th><th style="color:var(--str)">Ciclo Inverso (ECS)</th></tr></thead>
+    <tbody>
+      <tr><td>Scopo</td><td>Produrre lavoro</td><td>Raffreddare la cabina</td></tr>
+      <tr><td>Senso P-V</td><td>Orario ↻ (L &gt; 0)</td><td>Antiorario ↺ (L &lt; 0)</td></tr>
+      <tr><td>Compressore</td><td>Assorbe lavoro dalla turbina</td><td>Azionato da turbina ACM</td></tr>
+      <tr><td>Turbina</td><td>Produce lavoro utile</td><td>Espande l'aria raffreddandola</td></tr>
+      <tr><td>Calore Q_s</td><td>Immesso (combustione)</td><td>Ceduto (scambiatore con Ram Air)</td></tr>
+      <tr><td>Calore Q_i</td><td>Ceduto (scarico)</td><td>Assorbito (dalla cabina da raffreddare)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="svg-container">
+    <svg viewBox="0 0 480 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <marker id="axI" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6b7280"/></marker>
+        <marker id="arrGr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/></marker>
+        <marker id="arrYe" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b"/></marker>
+        <marker id="arrRe" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ef4444"/></marker>
+        <marker id="arrBl" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#3b82f6"/></marker>
+      </defs>
+      <line x1="50" y1="230" x2="450" y2="230" stroke="#6b7280" stroke-width="1.5" marker-end="url(#axI)"/>
+      <line x1="50" y1="230" x2="50" y2="20" stroke="#6b7280" stroke-width="1.5" marker-end="url(#axI)"/>
+      <text x="455" y="234" fill="#6b7280" font-size="12" font-family="JetBrains Mono">V</text>
+      <text x="35" y="18" fill="#6b7280" font-size="12" font-family="JetBrains Mono">P</text>
+      <!-- Cycle fill -->
+      <path d="M90,215 Q65,135 90,55 L370,55 Q395,135 370,215 Z" fill="rgba(16,185,129,0.06)" stroke="none"/>
+      <!-- 1→2: compressione adiabatica — curva (PV^k=cost), non una verticale retta -->
+      <path d="M90,215 Q65,135 90,55" fill="none" stroke="#f59e0b" stroke-width="2.5" marker-end="url(#arrYe)"/>
+      <text x="40" y="140" fill="#f59e0b" font-size="9" transform="rotate(-90,40,140)">1→2 Comp. adiabatica</text>
+      <!-- 2→3: isobar top (heat out) -->
+      <line x1="90" y1="55" x2="370" y2="55" stroke="#ef4444" stroke-width="2.5" marker-end="url(#arrRe)"/>
+      <text x="225" y="45" fill="#ef4444" font-size="10" text-anchor="middle">2→3 Isobara (cede calore al Ram Air)</text>
+      <!-- 3→4: espansione adiabatica — curva (PV^k=cost), non una verticale retta -->
+      <path d="M370,55 Q395,135 370,215" fill="none" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrBl)"/>
+      <text x="415" y="140" fill="#3b82f6" font-size="9" transform="rotate(90,415,140)">3→4 Esp. adiabatica</text>
+      <!-- 4→1: isobar bottom (heat in from cabin) -->
+      <line x1="370" y1="215" x2="90" y2="215" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrGr)"/>
+      <text x="225" y="232" fill="#10b981" font-size="10" text-anchor="middle">4→1 Isobara (assorbe calore dalla cabina)</text>
+      <!-- Points -->
+      <circle cx="90" cy="215" r="5" fill="#10b981"/><text x="72" y="213" fill="#e8eaf0" font-size="11" font-family="JetBrains Mono">1</text>
+      <circle cx="90" cy="55" r="5" fill="#f59e0b"/><text x="72" y="53" fill="#e8eaf0" font-size="11" font-family="JetBrains Mono">2</text>
+      <circle cx="370" cy="55" r="5" fill="#ef4444"/><text x="375" y="53" fill="#e8eaf0" font-size="11" font-family="JetBrains Mono">3</text>
+      <circle cx="370" cy="215" r="5" fill="#3b82f6"/><text x="375" y="213" fill="#e8eaf0" font-size="11" font-family="JetBrains Mono">4</text>
+      <!-- Sense -->
+      <text x="225" y="148" fill="rgba(16,185,129,0.7)" font-size="28" text-anchor="middle">↺</text>
+      <text x="225" y="168" fill="rgba(16,185,129,0.5)" font-size="9" font-family="JetBrains Mono" text-anchor="middle">antiorario = lavoro assorbito</text>
+      <text x="240" y="250" text-anchor="middle" fill="#6b7280" font-size="9" font-family="JetBrains Mono">Diagramma P-V · Ciclo Joule Inverso (ECS Bootstrap)</text>
+    </svg>
+  </div>
+
+  <h3 style="margin-top:1rem">Il Ciclo Bootstrap: variante ad alta efficienza</h3>
+  <p>Il <strong>Ciclo Bootstrap</strong> è la variante del ciclo Joule inverso adottata sull'A320 e sulla maggior parte dei velivoli commerciali moderni. Il nome deriva dall'espressione anglosassone <em>"pull yourself up by your own bootstraps"</em>: la turbina ACM produce lavoro meccanico che aziona direttamente un compressore secondario nello stesso Pack, senza attingere energia aggiuntiva dal motore. Questo consente temperature di uscita molto più basse rispetto al ciclo semplice.</p>
+  <p>Il Pack dell'A320 contiene una <strong>ACM a tre stadi sullo stesso albero</strong>: Fan − Compressore Bootstrap − Turbina. La turbina espande l'aria adiabaticamente fino a circa −30/−40 °C; il lavoro prodotto aziona il compressore Bootstrap (recupero energetico) e il Fan per la circolazione del Ram Air.</p>
+  <p>Il vantaggio del ciclo Bootstrap rispetto al ciclo Joule inverso semplice sta nel modo in cui viene impiegato il lavoro prodotto dalla turbina ACM. In un ciclo semplice quel lavoro andrebbe dissipato (ad esempio da un freno aerodinamico sul Fan), mentre nel Bootstrap esso aziona il compressore secondario montato sullo stesso albero: l'aria viene così ricompressa e riscaldata ulteriormente prima di passare nello scambiatore secondario (SHX), dove cede di nuovo calore al Ram Air. Disporre di un salto di pressione più ampio a monte della turbina consente un'espansione adiabatica molto più spinta in uscita, e quindi un abbattimento di temperatura ben maggiore di quello ottenibile con la sola pressione disponibile dal bleed air.</p>
+  <p>In altre parole, il compressore Bootstrap "recupera" un'energia meccanica che altrimenti andrebbe perduta e la reinveste per intensificare l'effetto frigorifero, migliorando il coefficiente di prestazione (COP) del ciclo rispetto alla configurazione elementare a singolo compressore. È per questo motivo che la quasi totalità dei Pack ECS dei velivoli commerciali moderni — A320 incluso — adotta la variante Bootstrap.</p>
+  <div class="info-grid">
+    <div class="info-chip"><span class="val" style="color:var(--str)">A320</span><span class="lbl">ciclo Bootstrap<br>2 Pack indipendenti</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--mec)">&gt;300°C</span><span class="lbl">Bleed Air<br>ingresso Pack</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--en)">−33°C</span><span class="lbl">uscita turbina<br>ACM (calc. ideale)</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--it)">~22°C</span><span class="lbl">temperatura<br>cabina finale</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Esempio pratico — domanda da orale</div>
+  <h3>Perché l'aria della cabina è fredda nonostante provenga da un motore a &gt;300 °C?</h3>
+  <p>Il Bleed Air entra nei Pack a oltre 300 °C. Nel ciclo Bootstrap inverso l'aria subisce: <strong>(1)</strong> raffreddamento isobaro nel PHX con Ram Air, <strong>(2)</strong> ricompressione nel compressore Bootstrap (T risale), <strong>(3)</strong> secondo raffreddamento isobaro nel SHX, <strong>(4)</strong> espansione adiabatica nella turbina ACM dove — per il Primo Principio — l'aria compie lavoro meccanico e la temperatura crolla fino a circa −33 °C. Quest'aria gelata viene poi miscelata nella Mixing Unit con aria ricircolata (~22 °C) per ottenere la temperatura cabina.</p>
+  <p>Il punto chiave: <strong>l'energia non scompare, si trasforma</strong>. La caduta di temperatura in turbina corrisponde esattamente al lavoro meccanico ceduto al compressore Bootstrap (recupero energetico). Il ciclo consuma lavoro motore (bleed air) ma lo sfrutta in modo estremamente efficiente.</p>
+</div>
+`,
+
+/* ══════ STRUTTURA ══════ */
+str: `
+<div class="modal-header">
+  <span class="modal-icon">🔧</span>
+  <div>
+    <div class="modal-title" style="color:var(--str)">ECS — ATA 21</div>
+    <div class="modal-subtitle">Struttura del Mezzo Aereo · Environmental Control System</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Definizione e scopo</div>
+  <h3>Cos'è l'ECS e perché è "sistema primario"</h3>
+  <p>L'<strong>Environmental Control System (ECS)</strong>, classificato al capitolo <strong>ATA 21</strong>, è il sistema primario vitale che trasforma l'ambiente ostile dell'alta quota in una "bolla" abitabile sicura per passeggeri ed equipaggio. È definito "sistema primario" perché la sua avaria può compromettere direttamente l'incolumità: senza pressurizzazione, a 11.000 m la pressione parziale dell'O₂ è insufficiente per mantenere la coscienza in 15–20 secondi.</p>
+  <p>L'ECS controlla quattro parametri vitali: <strong>pressione</strong> (sopravvivenza), <strong>temperatura</strong> (comfort e prestazione cognitiva equipaggio), <strong>purezza dell'aria</strong> (CO₂, contaminanti, batteri) e <strong>umidità</strong> (comfort e prevenzione del ghiaccio nei condotti).</p>
+  <div class="info-grid">
+    <div class="info-chip"><span class="val" style="color:var(--str)">≤8000ft</span><span class="lbl">Quota cabina max<br>PAX commerciali</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--en)">18–24°C</span><span class="lbl">Temperatura cabina<br>target comfort</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--mec)">≤0,5% CO₂</span><span class="lbl">Concentrazione max<br>CO₂ in cabina</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--it)">7,46 psi</span><span class="lbl">ΔP differenziale<br>standard A320</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Workflow dell'aria — passo per passo</div>
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-num" style="background:var(--mec-dim);color:var(--mec);border:1px solid rgba(245,158,11,0.3)">1</div>
+      <div class="step-body"><h4>Prelievo Bleed Air</h4><p>Aria spillata dal compressore del motore a >300 °C attraverso la <strong>Flow Control Valve (FCV)</strong>. La FCV si chiude automaticamente in caso di incendio, avviamento motore, ammaraggio o surriscaldamento (230–260 °C).</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--en-dim);color:var(--en);border:1px solid rgba(59,130,246,0.3)">2</div>
+      <div class="step-body"><h4>Pre-cooling (Heat Exchangers)</h4><p>L'aria calda è raffreddata negli scambiatori <strong>PHX</strong> (primario) e <strong>SHX</strong> (secondario) usando la Ram Air — aria esterna che entra per effetto della velocità del velivolo.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--str-dim);color:var(--str);border:1px solid rgba(16,185,129,0.3)">3</div>
+      <div class="step-body"><h4>ACM — Air Cycle Machine (Bootstrap)</h4><p>Cuore del Pack: compressore Bootstrap → inter-cooler → turbina di espansione. La turbina raffredda l'aria adiabaticamente (fino a ~−30 °C uscita) e il lavoro prodotto aziona il compressore secondario.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--str-dim);color:var(--str);border:1px solid rgba(16,185,129,0.3)">4</div>
+      <div class="step-body"><h4>Water Separator</h4><p>Rimuove l'umidità condensata dall'aria fredda prima dell'immissione in cabina, controllando l'umidità relativa.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--str-dim);color:var(--str);border:1px solid rgba(16,185,129,0.3)">5</div>
+      <div class="step-body"><h4>Mixing Unit &amp; Distribuzione</h4><p>L'aria fredda fresca si miscela con l'aria ricircolata filtrata (filtri HEPA) e viene distribuita a cockpit e cabina attraverso le <strong>Trim Air Valve</strong> per la regolazione zonale della temperatura.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--muted);color:var(--bg);border:1px solid var(--muted)">6</div>
+      <div class="step-body"><h4>Outflow Valve</h4><p>L'aria esaurita esce dalla fusoliera attraverso la <strong>Outflow Valve</strong>, motorizzata e controllata dal Cabin Pressure Controller, che mantiene la pressione interna alla quota cabina target.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Pressurizzazione — fisica e carichi strutturali</div>
+  <h3>Il carico di pressione sulla fusoliera</h3>
+  <p>La pressurizzazione impone alla fusoliera un <strong>carico ciclico</strong> significativo: ad ogni volo la struttura passa da ΔP = 0 a terra fino a ΔP ≈ 0,55 bar in crociera, e ritorna. Su un A320 con 20 anni di servizio e 3 voli/giorno si accumulano oltre 20.000 cicli di pressurizzazione — un carico a fatica che determina il dimensionamento strutturale (design damage-tolerant).</p>
+  <p>Questo regime di carico ciclico è il motivo per cui le fusoliere pressurizzate vengono progettate secondo la filosofia <strong>damage-tolerant</strong> (fail-safe): si parte dal presupposto che con il tempo possano comparire micro-cricche da fatica nel rivestimento e nei collegamenti strutturali, e si dimensiona la struttura in modo che queste cricche crescano lentamente e in maniera prevedibile, restando individuabili durante le ispezioni programmate ben prima di raggiungere una dimensione critica. A questo scopo la fusoliera è suddivisa in pannelli da centine (frames) e correnti (stringers), spesso intervallati da <em>tear strap</em> che arrestano la propagazione di una cricca circonferenziale; nelle zone a maggiore concentrazione di sforzo — bordi dei finestrini, portelloni, giunti — si impiegano inoltre rinforzi locali (doublers). Il dimensionamento a fatica tiene conto sia dell'ampiezza del singolo ciclo di pressurizzazione sia del numero totale di cicli previsto sull'intera vita operativa del velivolo, e viene verificato nel tempo attraverso i programmi di ispezione strutturale (Supplemental Structural Inspection Program).</p>
+  <div class="info-grid">
+    <div class="info-chip"><span class="val" style="color:var(--en)">1013 hPa</span><span class="lbl">Livello del mare<br>P₀ standard ISA</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--mec)">~473 hPa</span><span class="lbl">a 6.500 m<br>ipossia grave</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--it)">~215 hPa</span><span class="lbl">a 11.000 m<br>quota crociera</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--str)">~75 hPa</span><span class="lbl">a 19.000 m<br>ebollismo</span></div>
+  </div>
+  <p>Il sistema mantiene la quota cabina ≤8.000 ft anche a FL390. Il <strong>Cabin Pressure Controller (CPC)</strong> — ridondante, digitale — gestisce l'apertura della Outflow Valve controllando la <em>velocità di variazione della pressione</em>: max 500 ft/min in salita, max 250 ft/min in discesa, per evitare barotrauma auricolare ai passeggeri.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Sicurezza — valvole di protezione</div>
+  <ul>
+    <li><strong>Safety/Relief Valve:</strong> si apre automaticamente per sovrapressione differenziale eccessiva (protegge la struttura).</li>
+    <li><strong>Anti-vacuum Valve:</strong> si apre se la pressione interna scende sotto quella esterna (errore di regolazione in discesa rapida).</li>
+    <li><strong>Sistemi O₂:</strong> le maschere cadono automaticamente se la quota cabina supera 14.000 ft; PBE/EPOS per l'equipaggio.</li>
+    <li><strong>Decompressione esplosiva:</strong> TUC (Time of Useful Consciousness) a 40.000 ft ≈ 15 secondi. L'ECS è il sistema che previene questo scenario.</li>
+  </ul>
+</div>
+
+<div class="edciv-box">
+  <div class="edciv-label">⚖️ Focus Educazione Civica</div>
+  <h3>L'Articolo 32 e la Sicurezza del Volo</h3>
+
+  <div class="edciv-item">
+    <div class="edciv-icon">📜</div>
+    <div class="edciv-item-body">
+      <h4>Il Principio Costituzionale</h4>
+      <p>L'<strong>Articolo 32 della Costituzione</strong> definisce la salute come un «fondamentale diritto dell'individuo». In ambito aeronautico, questo diritto si traduce nell'obbligo di garantire un ambiente pressurizzato e salubre a bordo di ogni aeromobile commerciale.</p>
+    </div>
+  </div>
+
+  <div class="edciv-item">
+    <div class="edciv-icon">🛡️</div>
+    <div class="edciv-item-body">
+      <h4>L'ECS come Garante della Salute</h4>
+      <p>L'impianto ECS non è solo un sistema tecnico, ma lo strumento che permette il rispetto di questo diritto a 10.000 metri di quota. Protegge passeggeri ed equipaggio da:</p>
+      <ul>
+        <li><strong>Ipossia:</strong> garantendo la pressione parziale di ossigeno necessaria per evitare perdita di coscienza.</li>
+        <li><strong>Embolie gassose:</strong> mantenendo una quota cabina costante (≤8.000 ft) per evitare la liberazione di azoto nel sangue.</li>
+        <li><strong>Benessere Termo-igrometrico:</strong> regolando umidità e temperatura per prevenire malesseri fisici.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="edciv-item">
+    <div class="edciv-icon">🤝</div>
+    <div class="edciv-item-body">
+      <h4>Responsabilità Etica e Professionale</h4>
+      <p>La progettazione e la manutenzione rigorosa dell'ATA 21 — secondo le norme <strong>EASA/FAA</strong> — rappresentano l'impegno dell'industria aeronautica nel tutelare l'incolumità fisica come valore supremo, superando la mera logica del trasporto commerciale.</p>
+    </div>
+  </div>
+</div>
+`,
+
+/* ══════ ITALIANO ══════ */
+it: `
+<div class="modal-header">
+  <span class="modal-icon">✒️</span>
+  <div>
+    <div class="modal-title" style="color:var(--it)">D'Annunzio &amp; il Volo</div>
+    <div class="modal-subtitle">Italiano · Letteratura del primo Novecento</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Contesto storico-letterario</div>
+  <h3>Il primo Novecento tra tecnologia e crisi del soggetto</h3>
+  <p>L'inizio del XX secolo segna una frattura radicale: le scoperte scientifiche (relatività, 1905; meccanica quantistica) e le innovazioni tecnologiche (automobile, aeroplano, cinema) travolgono la visione positivista e aprono un dibattito profondo sul rapporto tra <strong>uomo, macchina e natura</strong>. L'aeroplano — conquistato dai fratelli Wright nel 1903 — diventa il simbolo per eccellenza del superamento dei limiti umani.</p>
+  <ul>
+    <li><strong>Estetismo/Superomismo (D'Annunzio):</strong> la macchina come strumento dell'eroe che afferma la propria volontà di potenza nietzschiana. Il pilota domina la natura.</li>
+    <li><strong>Futurismo (Marinetti):</strong> la macchina non è uno strumento ma un valore assoluto, superiore all'umanità tradizionale. Velocità e dinamismo come nuova estetica.</li>
+    <li><strong>Modernismo critico (Svevo, Pirandello):</strong> la macchina è ambivalente e alienante; il soggetto moderno è frammentato, inetto, incapace di controllare le forze che ha scatenato.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="section-title">Gabriele D'Annunzio</div>
+  <h3>Il Vate e il Superuomo in volo</h3>
+  <p>Gabriele D'Annunzio (1863–1938), detto il "Vate", incarna la figura del <strong>Superuomo nietzschiano</strong> applicata all'azione eroica. Per lui il volo non è tecnica né sport: è un atto di <em>volontà di potenza</em> e dominio sulla natura.</p>
+
+  <div class="quote-block">
+    "Per D'Annunzio, il volo non è solo tecnica, ma l'alto eroismo del Superuomo che domina la materia. L'ECS è la tecnologia che lo rende possibile: crea artificialmente la vita a 10.000 metri di quota, permettendo all'uomo di restare «vivo» dove l'aria manca."
+    <cite>— dalla tesi multidisciplinare ECS &amp; Letteratura</cite>
+  </div>
+
+  <div class="step-flow">
+    <div class="step-item">
+      <div class="step-num" style="background:var(--it-dim);color:var(--it);border:1px solid rgba(239,68,68,0.3)">1</div>
+      <div class="step-body"><h4>Il Superuomo Nietzschiano</h4><p>D'Annunzio riprende da Nietzsche il concetto di Übermensch: l'uomo eccezionale che si pone al di là della morale comune, capace di creare nuovi valori. Nel contesto del volo, il pilota è colui che sfida la natura e la vince.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--it-dim);color:var(--it);border:1px solid rgba(239,68,68,0.3)">2</div>
+      <div class="step-body"><h4>Il Volo su Vienna (9 agosto 1918)</h4><p>D'Annunzio guida undici velivoli SVA da Venezia a Vienna e ritorno (~1.100 km) per lanciare volantini — nessuna bomba, solo un messaggio. Impresa militare e azione poetica: il velivolo diventa strumento della parola e dello spirito. Quota raggiunta: ~6.100 m.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--it-dim);color:var(--it);border:1px solid rgba(239,68,68,0.3)">3</div>
+      <div class="step-body"><h4>La Macchina come Estensione dell'Io</h4><p>Per D'Annunzio l'aeroplano è un prolungamento del corpo e dello spirito del pilota. L'ECS è la condizione invisibile che rende possibile questo eroismo: senza pressurizzazione e condizionamento, il "Superuomo" sviene per ipossia a 5.500 m.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--it-dim);color:var(--it);border:1px solid rgba(239,68,68,0.3)">4</div>
+      <div class="step-body"><h4>Opere chiave</h4><p><em>Forse che sì forse che no</em> (1910): romanzo in cui il protagonista Paolo Tarsis è un aviatore superomistico. <em>Le Laudi</em>: raccolta poetica in cui natura e gesta eroiche si fondono. L'aereo appare come la sintesi tra uomo e natura dominata.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Il Futurismo</div>
+  <h3>Marinetti e il Culto della Velocità</h3>
+  <p>Il <strong>Manifesto del Futurismo</strong> (1909, Le Figaro) proclama che la macchina e la velocità sono più belle dell'arte classica. Punti chiave del Futurismo:</p>
+  <ul>
+    <li>La velocità è il valore estetico supremo: «un'automobile ruggente è più bella della Vittoria di Samotracia».</li>
+    <li>Esaltazione della guerra come "igiene del mondo", del dinamismo, del patriottismo.</li>
+    <li><strong>Aeropittura</strong> (anni '20–'30): il mondo visto dall'alto, dalla cabina. Tullio Crali, «Incuneandosi nell'abitato» (1939): aereo in picchiata su una città.</li>
+  </ul>
+
+  <table class="comparison-table">
+    <thead><tr><th>Aspetto</th><th style="color:var(--it)">D'Annunzio</th><th style="color:var(--mec)">Futurismo (Marinetti)</th></tr></thead>
+    <tbody>
+      <tr><td>Rapporto con la macchina</td><td>Strumento del Superuomo — la padroneggia</td><td>La macchina è il nuovo dio — fine in sé</td></tr>
+      <tr><td>Volo come</td><td>Atto eroico individuale, poetico</td><td>Simbolo di velocità e dinamismo collettivo</td></tr>
+      <tr><td>Passato/Natura</td><td>Da dominare con l'azione</td><td>Da rifiutare e distruggere (passatismo = morte)</td></tr>
+      <tr><td>Stile letterario</td><td>Elaborato, musicale, simbolista</td><td>Sintassi spezzata, parole in libertà</td></tr>
+      <tr><td>Punti in comune</td><td colspan="2">Esaltazione della macchina, velocità, dinamismo, coraggio e dell'aereo come sintesi dell'uomo moderno</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">Il Panismo e la Natura</div>
+  <h3>D'Annunzio prima del Superuomo: la fusione con la natura</h3>
+  <p>Prima di esaltare la macchina, D'Annunzio elabora il <strong>Panismo</strong> — la fusione mistica dell'io con la natura — nelle <em>Laudi del Cielo del Mare della Terra e degli Eroi</em> (1899–1903), in particolare in <em>Alcyone</em> (1903). Il testo simbolo è <em>La pioggia nel pineto</em>: il poeta si scioglie nella natura, i confini tra uomo e mondo naturale si dissolvono in una poesia musicale e sensoriale.</p>
+  <div class="quote-block">
+    «Taci. Su le soglie / del bosco non odo / parole che dici / umane; ma odo / parole più nuove / che parlano gocciole e foglie / lontane.»
+    <cite>— G. D'Annunzio, La pioggia nel pineto (Alcyone, 1902)</cite>
+  </div>
+  <p>Il contrasto con l'ECS è filosoficamente preciso: mentre il Panismo celebra la <em>fusione</em> con l'ambiente naturale, l'ECS è la tecnologia che <em>isola e protegge</em> l'uomo da quella stessa natura. L'aria a −56 °C, la pressione letale, l'ossigeno rarefatto dell'alta quota — tutto ciò che il Panismo ammirerebbe come grandioso e sublime, l'ingegneria aeronautica neutralizza artificialmente. È il passaggio dal D'Annunzio romantico al D'Annunzio "ingegnere" del gesto eroico.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Il contrasto critico — Svevo</div>
+  <h3>Italo Svevo e la profezia dell'"ordigno"</h3>
+  <p><strong>Italo Svevo</strong> (Trieste, 1861–1928) rappresenta la voce critica di fronte all'entusiasmo tecnologico. Il suo romanzo <em>La coscienza di Zeno</em> (1923) si chiude con la profezia affidata all'antieroe Zeno Cosini — figura dell'inetto, dell'uomo mediocre che si autoanalizza continuamente senza mai cambiare davvero:</p>
+  <div class="quote-block">
+    «Forse traverso una catastrofe inaudita prodotta dagli ordigni ritorneremo alla salute. Quando i gas velenosi non basteranno più, un uomo fatto come tutti gli altri, nel segreto di una stanza di questo mondo, inventerà un esplosivo incomparabile...»
+    <cite>— Italo Svevo, La coscienza di Zeno, cap. VIII (1923)</cite>
+  </div>
+  <p>Svevo intuisce il paradosso della modernità: la stessa tecnologia (gli "ordigni") che il Futurismo esalta potrebbe portare alla distruzione dell'umanità. L'ECS incarna entrambi i poli: è il <strong>trionfo dell'ingegneria</strong> (visione futurista-dannunziana) ma anche la prova della <strong>dipendenza assoluta dall'artificiale</strong> — il "Superuomo" sopravvive a 11.000 m solo perché una macchina lo tiene in vita (visione sveviana). Questo è il filo rosso che lega le 4 materie dell'esame.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Collegamento multidisciplinare</div>
+  <h3>ECS: la "tecnologia invisibile" del volo eroico</h3>
+  <p>Il nodo concettuale della tesi: mentre D'Annunzio e i Futuristi celebravano il volo come gesta umana suprema, <strong>l'ECS è la tecnologia silenziosa che lo rende fisiologicamente possibile</strong>. Senza pressurizzazione e condizionamento, il pilota sviene per ipossia già a 5.500 m. Il "Superuomo" dipende in realtà da un sofisticato sistema termodinamico.</p>
+  <div class="info-grid">
+    <div class="info-chip"><span class="val" style="color:var(--it)">5500m</span><span class="lbl">quota → ipossia grave<br>senza ECS</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--str)">6100m</span><span class="lbl">Vienna, quota<br>volo D'Annunzio</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--mec)">SVA-5</span><span class="lbl">Velivolo del<br>Volo su Vienna</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--en)">1918</span><span class="lbl">Anno dell'impresa<br>eroica</span></div>
+  </div>
+</div>
+`,
+
+/* ══════ INGLESE ══════ */
+en: `
+<div class="modal-header">
+  <span class="modal-icon">🌐</span>
+  <div>
+    <div class="modal-title" style="color:var(--en)">Technical English</div>
+    <div class="modal-subtitle">Composite Materials · ECS Integration · Safety &amp; Structure</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">1 · Technical Definition and Classification</div>
+  <h3>What Is a Composite Material?</h3>
+  <p>A <strong>composite material</strong> is formed by two or more materials that combine to produce structural properties not present in the individual components. It consists of two fundamental elements working together:</p>
+  <div class="step-flow" style="margin-top:1rem;">
+    <div class="step-item">
+      <div class="step-num" style="background:var(--en-dim);color:var(--en);border:1px solid rgba(59,130,246,0.3)">R</div>
+      <div class="step-body"><h4>Reinforcing Material</h4><p>Fibers such as <strong>Glass</strong>, <strong>Carbon (graphite)</strong>, or <strong>Aramid (Kevlar)</strong> that provide strength and stiffness to the structure.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--en-dim);color:var(--en);border:1px solid rgba(59,130,246,0.3)">M</div>
+      <div class="step-body"><h4>Binding Material (Matrix)</h4><p>A substance such as <strong>epoxy resin</strong>, metal, or ceramic that holds the fibers together, transfers loads between them, and protects them from the environment.</p></div>
+    </div>
+  </div>
+
+  <div class="section-title" style="margin-top:1.5rem;">Classification of Composites</div>
+  <table class="comparison-table">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Full Name</th>
+        <th>Matrix</th>
+        <th>Key Properties &amp; Application</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="color:var(--en);font-family:'JetBrains Mono',monospace;font-weight:600;">PMC</td>
+        <td>Polymer-Matrix Composites</td>
+        <td>Epoxy resin, PEEK</td>
+        <td>High strength, low weight — e.g., <strong>Graphite fiber-epoxy</strong> used in fuselage panels &amp; control surfaces</td>
+      </tr>
+      <tr>
+        <td style="color:var(--mec);font-family:'JetBrains Mono',monospace;font-weight:600;">MMC</td>
+        <td>Metal-Matrix Composites</td>
+        <td>Aluminum, Titanium</td>
+        <td>Elevated temperature resistance — used in engine nacelles and landing gear components</td>
+      </tr>
+      <tr>
+        <td style="color:var(--it);font-family:'JetBrains Mono',monospace;font-weight:600;">CMC</td>
+        <td>Ceramic-Matrix Composites</td>
+        <td>Silicon carbide (SiC)</td>
+        <td>Extreme heat and corrosion resistance — <strong>crucial for engine hot-section components</strong> where bleed air originates</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">2 · The Link to the ECS and Pressurization</div>
+  <h3>Why Composites Are Critical to the Environmental Control System</h3>
+  <p>The use of composite materials is directly and inseparably connected to the Environmental Control System. There are three fundamental reasons that link materials science to cabin safety:</p>
+
+  <div class="step-flow" style="margin-top:1.2rem;">
+    <div class="step-item">
+      <div class="step-num" style="background:var(--en-dim);color:var(--en);border:1px solid rgba(59,130,246,0.3)">1</div>
+      <div class="step-body">
+        <h4>Pressurization and Fatigue Resistance</h4>
+        <p>The ECS creates a pressurized <em>"bubble"</em> inside the cabin at cruise altitude. This pressurization generates repeated <strong>expansion/contraction cycles</strong> every flight — a phenomenon known as <strong>pressurization fatigue</strong>. Composites such as <strong>Carbon Fiber Reinforced Plastic (CFRP)</strong> offer a superior <strong>Strength-to-Weight ratio</strong> and far better fatigue resistance compared to traditional aluminum alloys, ensuring the fuselage integrity over thousands of pressurization cycles.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--en-dim);color:var(--en);border:1px solid rgba(59,130,246,0.3)">2</div>
+      <div class="step-body">
+        <h4>Altitude Efficiency — Making the ECS the Last Line of Defense</h4>
+        <p>Because composites significantly reduce airframe weight — accounting for <strong>50% of modern aircraft structure</strong> like the Boeing 787 Dreamliner — aircraft can reach higher cruising altitudes efficiently. At these altitudes (FL350–FL410), the external environment is immediately lethal: temperatures drop to −55 °C, pressure is less than 25% of sea level, and oxygen partial pressure falls below the consciousness threshold. This makes the ECS the <strong>most critical life-support system on board</strong>.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num" style="background:var(--en-dim);color:var(--en);border:1px solid rgba(59,130,246,0.3)">3</div>
+      <div class="step-body">
+        <h4>High-Temperature Bleed Air — CMCs in the Hot Section</h4>
+        <p>The ECS uses <strong>Bleed Air</strong> extracted from the engine compressor stages. At its origin, this air exceeds <strong>300 °C</strong> at pressures up to 5 bar. <strong>Ceramic-Matrix Composites (CMCs)</strong> are employed precisely in this engine "hot section" — turbine blades, combustor liners, nozzle guide vanes — to withstand these extreme conditions where conventional metals would fail, ensuring a continuous and reliable supply of air for the conditioning system.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="quote-block" style="border-left-color:var(--en);background:var(--en-dim);margin-top:1.2rem;">
+    "Without composites, modern aircraft could not achieve the structural integrity required for pressurized flight at high altitude. Without the ECS, that altitude would be instantly fatal. The two systems — materials and environment control — are therefore two sides of the same coin of aviation safety."
+    <cite style="color:var(--en)">— Synthesis: Composite Materials &amp; ECS Integration</cite>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">3 · Key Data — Composites &amp; ECS Interface</div>
+  <div class="info-grid">
+    <div class="info-chip"><span class="val" style="color:var(--en)">50%</span><span class="lbl">Composite content<br>Boeing 787 by weight</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--mec)">&gt;300°C</span><span class="lbl">Bleed Air temp<br>at compressor stage</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--it)">CFRP</span><span class="lbl">Carbon Fiber<br>Reinforced Plastic</span></div>
+    <div class="info-chip"><span class="val" style="color:var(--str)">CMC</span><span class="lbl">Ceramic Matrix<br>Hot section use</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">4 · Technical Vocabulary — Composites &amp; ECS</div>
+  <h3>Key Terms for the Oral Examination</h3>
+  <div class="vocab-grid">
+    <div class="vocab-item"><div class="term">Composite Material</div><div class="def">A material formed by two or more constituents (fiber + matrix) producing properties superior to either alone</div></div>
+    <div class="vocab-item"><div class="term">Matrix</div><div class="def">The binding phase (resin, metal, or ceramic) that holds the reinforcing fibers together and transfers loads</div></div>
+    <div class="vocab-item"><div class="term">CFRP</div><div class="def">Carbon Fiber Reinforced Plastic — primary structural composite in modern commercial aircraft fuselages</div></div>
+    <div class="vocab-item"><div class="term">Strength-to-Weight Ratio</div><div class="def">A material's tensile strength divided by its density — composites excel here vs. aluminum</div></div>
+    <div class="vocab-item"><div class="term">Fatigue (Pressurization)</div><div class="def">Cyclic stress damage caused by repeated cabin pressurization/depressurization on each flight</div></div>
+    <div class="vocab-item"><div class="term">Bleed Air</div><div class="def">High-pressure, high-temperature air (>300°C) extracted from engine compressor stages to feed the ECS</div></div>
+    <div class="vocab-item"><div class="term">PMC</div><div class="def">Polymer-Matrix Composite — lightweight, high-strength; used in airframe, control surfaces, nacelles</div></div>
+    <div class="vocab-item"><div class="term">MMC</div><div class="def">Metal-Matrix Composite — higher thermal resistance than PMC; used in moderate-temperature engine zones</div></div>
+    <div class="vocab-item"><div class="term">CMC</div><div class="def">Ceramic-Matrix Composite — resists extreme heat and corrosion; used in turbine hot section where bleed air originates</div></div>
+    <div class="vocab-item"><div class="term">Aramid (Kevlar)</div><div class="def">High-strength synthetic fiber used as reinforcement; excellent impact and ballistic resistance</div></div>
+    <div class="vocab-item"><div class="term">Pressure Vessel</div><div class="def">The fuselage structure, reinforced by composites, that contains the pressurized cabin environment</div></div>
+    <div class="vocab-item"><div class="term">Hot Section</div><div class="def">Engine turbine/combustor area exceeding 1,000°C where CMCs replace conventional Ni-superalloys</div></div>
+  </div>
+</div>
+`
+  };
+  return contents[subject] || '<p>Contenuto non trovato.</p>';
+}
+</script>
+</body>
+</html>
